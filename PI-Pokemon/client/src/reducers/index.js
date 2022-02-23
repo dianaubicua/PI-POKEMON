@@ -92,15 +92,19 @@ function rootReducer (state=initialState, action) {
                 }
             }
         case 'FILTER_BY_TYPE':
-            const otraCosa = state.pokemons;
-            console.log(otraCosa);
-            const typesFiltered = action.payload === 'all' ? otraCosa : otraCosa.filter(p => p.types.includes(action.payload))
-            console.log(typesFiltered);
-                        return {
+            const misPokes = state.pokemonsCopy;
+            const typesFiltered = action.payload === 'all' ? misPokes :
+             misPokes.filter(p => {
+                 if(typeof p.types[0] !== 'string'){
+                     p.types = p.types.map(t => t.name)     
+             } else {
+                 p.types = p.types
+             } 
+             return p.types.includes(action.payload)
+            })
+            return {
                 ...state,
-                
-                pokemonsCopy: typesFiltered,
-
+                pokemons: typesFiltered,
             }
 
         case 'FILTER_CREATED': 
@@ -110,11 +114,13 @@ function rootReducer (state=initialState, action) {
                 ...state,
                 pokemonsCopy: action.payload === 'All' ? state.pokemons : createdFilter
             }
+
         case 'GET_NAME_POKEMONS':
             return {
                 ...state,
-                pokemonsCopy: action.payload
+                pokemons: [action.payload]
             }
+
         case 'GET_DETAIL':
             return {
                 ...state,

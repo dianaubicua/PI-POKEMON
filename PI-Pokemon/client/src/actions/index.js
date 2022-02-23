@@ -77,11 +77,11 @@ export function getNamePokemons(name){
         console.log(name);
         try{
             const pokemonName = await axios.get("http://localhost:3001/pokemons/?name=" + name)
+            console.log(pokemonName);
             return dispatch({
                 type: "GET_NAME_POKEMONS",
                 payload: pokemonName.data
             })
-            console.log(pokemonName.data);
         }catch(error){
         console.log(error);
     }

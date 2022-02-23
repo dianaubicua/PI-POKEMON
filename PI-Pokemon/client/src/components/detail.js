@@ -35,7 +35,7 @@ export default function Detail() {
                 <h3>Speed:{myPokemon[0].speed}</h3>
                 <h3>Height:{myPokemon[0].height}</h3>
                 <h3>Weight:{myPokemon[0].weight}</h3>
-                <h3>Types:  </h3>
+                <h3>Types: {myPokemon[0].types?.map(t => t).join(", ")}  </h3>
                 </div> : <h1>Loading...</h1>}
         </div>
     );

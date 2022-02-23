@@ -2,9 +2,9 @@ import React from "react";
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
 import { getNamePokemons } from "../actions";
-import { useEffect } from "react";
 
-export default function SearchBar({onSearch}) {
+
+export default function SearchBar({}) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
 
@@ -18,15 +18,12 @@ export default function SearchBar({onSearch}) {
         e.preventDefault();
         dispatch(getNamePokemons(name));
     }
-
-    useEffect(() => {
-        dispatch(getNamePokemons())
-    },[dispatch])
     
 
     return (
         <div>
             <input
+            value={name}
             type="text"
             placeholder="Type a pokemon name"
             onChange={(e) => handleInputChange(e)}

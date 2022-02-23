@@ -13,15 +13,13 @@ import SearchBar from "../components/searchbar"
 
 export default function Home () {
 const dispatch = useDispatch()
-const allPokemons = useSelector(state => state.pokemonsCopy)
-
-
+const allPokemons = useSelector(state => state.pokemons)
 
 const [currentPage, setCurrentPage] = useState(1) //mipagina actual que arranca en 1
 const [pokemonsPerPage, setPokemonsPerPage] = useState(12) //mis personajes por pagina
 const indexOfLastPokemon = currentPage * pokemonsPerPage //indice del ultimo personaje
 const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage //indice del primer personaje menos la cantidad de personajes por pagina
-const currentPokemons = allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon) //toma el indice del primero y del último de cada página, o sea si mi página termina en 12 la siguiente comienza en 13 y termina en 24, se modifica dependiendo de la página en la que estoy
+const currentPokemons = allPokemons?.slice(indexOfFirstPokemon, indexOfLastPokemon) //toma el indice del primero y del último de cada página, o sea si mi página termina en 12 la siguiente comienza en 13 y termina en 24, se modifica dependiendo de la página en la que estoy
 
 const allTypes = useSelector(state => state.types)
 
