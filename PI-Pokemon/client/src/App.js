@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Provider } from 'react-redux'
 import { Routes, Route } from 'react-router-dom';
-import Landing from './pages/landing';
+import Landing from './pages/Landing/landing.jsx';
 import Home from './pages/home.js';
 import Add from './pages/add.js';
 import DetailID from './pages/detailID.js';

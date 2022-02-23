@@ -74,12 +74,14 @@ export function orderByStrength(payload) {
 
 export function getNamePokemons(name){
     return async function (dispatch){
+        console.log(name);
         try{
             const pokemonName = await axios.get("http://localhost:3001/pokemons/?name=" + name)
             return dispatch({
                 type: "GET_NAME_POKEMONS",
                 payload: pokemonName.data
             })
+            console.log(pokemonName.data);
         }catch(error){
         console.log(error);
     }

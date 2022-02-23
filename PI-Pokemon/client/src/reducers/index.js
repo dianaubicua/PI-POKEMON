@@ -113,7 +113,7 @@ function rootReducer (state=initialState, action) {
         case 'GET_NAME_POKEMONS':
             return {
                 ...state,
-                pokemons: action.payload
+                pokemonsCopy: action.payload
             }
         case 'GET_DETAIL':
             return {
