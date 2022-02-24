@@ -61,12 +61,12 @@ router.get('/', async (req, res) =>{
             sprites: el.data.sprites.front_default,
             types: el.data.types.map((e) => e.type.name),
             id: el.data.id,
-            createdInDb: el.createdInDb,
+        
         }
     });
 
-    const pokemonesDb = await Pokemon.findAll({
-        attributes: ['id', 'name', 'strength'],
+    const pokemonesDb = await Pokemon.findOne({
+        attributes: ['id', 'name', 'strength', 'createdInDb'],
         include: {
             model: Type,
             attributes: ['name'],

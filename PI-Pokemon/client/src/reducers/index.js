@@ -108,11 +108,13 @@ function rootReducer (state=initialState, action) {
             }
 
         case 'FILTER_CREATED': 
-        const createdFilter = action.payload === 'created' ? state.pokemons.filter(el => el.createdInDb)  : state.pokemons.filter (el => !el.createdInDb)
+        const todosPokemons = state.pokemonsCopy;
+        const createdFilter = action.payload === 'created' ? todosPokemons.filter(el => el.createdInDb)  : 
+        todosPokemons.filter (el => !el.createdInDb)
         console.log(createdFilter);
             return {
                 ...state,
-                pokemonsCopy: action.payload === 'All' ? state.pokemons : createdFilter
+                pokemons: action.payload === 'All' ? todosPokemons : createdFilter
             }
 
         case 'GET_NAME_POKEMONS':

@@ -44,6 +44,7 @@ function handleClick(e) {
 
 function handleFilterCreated(e) {
     dispatch(filterCreated(e.target.value))
+    setCurrentPage(1)
 }
 
 function handleFilterType(e) {
