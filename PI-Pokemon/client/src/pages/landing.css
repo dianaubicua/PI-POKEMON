@@ -1,0 +1,58 @@
+.btn-bg {
+    width: 100%;
+    height: 100vh;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-bg.Pokemon {
+    background: #ffd740;
+}
+
+.boton:hover{
+    border-color: #ffd740;
+    background: #ffd740;
+}
+
+.boton {
+    background-color: #ffd740;
+    cursor: pointer;
+    overflow: visible;
+    outline: none;
+    color: #fff;
+    position: relative;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    font-family: 'Lato';
+    font-size: 1.5em;
+}
+
+
+
+
+/* .grid {
+    display: grid;
+  grid-template-columns: 100px 250px;
+  align-items: center;
+  margin-top: 40px;
+  margin: 0 auto;
+  width: 350px;
+  background-color: var(--black-contrast);
+  border-radius: 32px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+} */
+
+/* .background {
+    background-image: url("https://wallpapercave.com/wp/wp2553750.jpg");
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+} */

@@ -57,7 +57,8 @@ function rootReducer (state=initialState, action) {
                 ...state,
             }
         case 'FILTER_NAME':
-            let sortedArr = action.payload === 'asc' ?
+                
+                let sortedArr = action.payload === 'asc' ?
             state.pokemonsCopy.sort(function(a,b){
                 if (a.name > b.name) {
                     return 1;
@@ -78,7 +79,6 @@ function rootReducer (state=initialState, action) {
         return {
             ...state,
             pokemonsCopy: sortedArr,
-           
         }
 
         case 'ORDER_BY_STRENGTH':

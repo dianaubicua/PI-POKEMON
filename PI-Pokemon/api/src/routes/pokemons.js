@@ -49,7 +49,9 @@ router.get('/', async (req, res) =>{
 } else {
 
     const pokemonesFront = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=40&offset=0');
+    console.log(pokemonesFront);
     const pokemones = pokemonesFront.data.results.map(el =>{
+        console.log(el);
         return   axios.get(el.url);
     });
     //console.log(pokemones); 
@@ -65,14 +67,19 @@ router.get('/', async (req, res) =>{
         }
     });
 
-    const pokemonesDb = await Pokemon.findOne({
-        attributes: ['id', 'name', 'strength', 'createdInDb'],
-        include: {
-            model: Type,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            }
+  
+    const infoDb = await Pokemon.findAll({include: Type});
+    const pokemonesDb = infoDb.map(p => {
+        return {
+            name: p.name,
+            image: p.image,
+            types: p.types.map(e => e.name),
+            str: p.str,
+            id: p.id,
+            spd: p.spd,
+            hp: p.hp,
+            def: p.def,
+            createdInDb: p.createdInDb
         }
     });
 
