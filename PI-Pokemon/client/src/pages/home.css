@@ -1,0 +1,22 @@
+.backgroundHome {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+  background-color: var(--black-contrast);
+  height: 60px;
+}
+
+.titulo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginado {
+    margin: 0 auto;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+  }

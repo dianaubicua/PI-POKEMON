@@ -1,6 +1,7 @@
 import React from 'react';
-/* import img from '../helpers/powerType' */
+ import img from '../helpers/powerType' 
 import { Link } from "react-router-dom"
+import './card.css'
 
 
 export const Card = ({id, name, sprites, types, strength}) => {
@@ -12,31 +13,31 @@ export const Card = ({id, name, sprites, types, strength}) => {
 
 
     return(
-        <div>
-            <Link to={'/detail/' + id}>
-                <button>
-                    <div>
+        <div className='backgroundCard'>
+                <Link to={'/detail/' + id} className="link">
+                    <div className='gridCard'>
                         <div>
-                            <img src={sprites} 
+                            <h3 className='nameCard'>{name}</h3>
+                            <img 
+                            src={sprites} 
                             alt={name} 
-                            width="125px" 
-                            heigt="125px" />
-                            <h3>{name}</h3>
+                            width="150px" 
+                            heigt="150px" />
+                           
                         </div>
                         <div>
-                            <h4>{strength}</h4>
+                            <h4>Strength: {strength}</h4>
                         </div>
                         <div>
-                        <h5>Tipos: {types.join(", ")}</h5>
-                            {/* {types?.map((type) => ( */}
-                            {/* <img src={img[types]} alt={types} key={types}/>  */}
-                            {/* ))} */}
-                            
+                        <h5>Types: {/* {types.join(", ")} */}</h5>
+                             {types?.map((types) => (
+                             <img src={img[types]} alt={types} key={types}/> 
+                            ))} 
                         </div>              
                     </div>
-                </button>
-            </Link>
-        </div>
+                    </Link>
+                </div> 
+            
     )
 }
 

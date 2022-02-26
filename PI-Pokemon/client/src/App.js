@@ -9,6 +9,9 @@ import DetailID from './pages/detailID.js';
 import store from './store/index'
 
 function App() {
+
+
+
   return (
     <div className="App">
       <Provider store={store}>

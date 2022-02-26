@@ -10,6 +10,7 @@ import { getPokemons,
 import Card from "../components/card"
 import Paginado from "../components/paginado"
 import SearchBar from "../components/searchbar"
+import './home.css'
 
 export default function Home () {
 const dispatch = useDispatch()
@@ -69,16 +70,9 @@ function handleSortStrength (e) {
 
 
     return (
-        <div>
+        <div className="backgroundHome">
             <div>
-                <h1>Bienvenido a Pueblo Paleta</h1>
-                <div>
-                    <SearchBar />
-                </div>
-                
-                <button onClick={e=> {handleClick(e)}}>
-                    Volver a cargar los pokemones
-                </button>
+                <SearchBar />
             </div>
             <div>
                 <select onChange={(e) => handleSortName(e)}>
