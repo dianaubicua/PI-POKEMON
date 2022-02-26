@@ -11,6 +11,7 @@ import Card from "../components/card"
 import Paginado from "../components/paginado"
 import SearchBar from "../components/searchbar"
 import './home.css'
+import { Link } from "react-router-dom"
 
 export default function Home () {
 const dispatch = useDispatch()
@@ -41,6 +42,7 @@ useEffect(() => {
 function handleClick(e) {
     e.preventDefault()
     dispatch(getPokemons())
+    dispatch(getTypes())
 }
 
 function handleFilterCreated(e) {
@@ -71,8 +73,9 @@ function handleSortStrength (e) {
 
     return (
         <div className="backgroundHome">
-            <div>
                 <SearchBar />
+                <div className="pokemonContainer">
+
             </div>
             <div>
                 <select onChange={(e) => handleSortName(e)}>
@@ -100,6 +103,7 @@ function handleSortStrength (e) {
                     <option value='api'>Internet</option>
                 </select>
             </div>
+            <div className="pokemonsContainer">
             <div>
                 <Paginado //renderizamos páginado
                     pokemonsPerPage={pokemonsPerPage}
@@ -107,7 +111,7 @@ function handleSortStrength (e) {
                     paginado={paginado}
                 />
             </div>
-            <div>
+            <div className="gridHome">
                 {currentPokemons?.map((c) => {
                     return (
                         <div>
@@ -125,6 +129,8 @@ function handleSortStrength (e) {
                 })}
                         
             </div>
+            </div>
+            
         </div>
     )
 }

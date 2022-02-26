@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {postPokemones, getTypes} from "../actions/index";
+import './formulario.css';
+import pokebola from "../assets/pokebola.png";
+import { Link } from "react-router-dom";
 
 
 function validate(input) {
@@ -95,12 +98,14 @@ function handleCheck(e) {
 
 
     return(
-        <div>
-            <h1></h1>
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <div>
+        <div className="containerForm">
+            <form className="form" onSubmit={(e)=>handleSubmit(e)}>
+                <section className="sectioncontainer">
+                <div className="flexform">
+                <div className="flexinputadd">
                     <label>Name:</label>
                     <input 
+                    className="inputadd"
                     type="text" 
                     value={input.name} 
                     name="name"
@@ -111,7 +116,7 @@ function handleCheck(e) {
                 </div>
                 <div>
                     <label>Life:</label>
-                    <input 
+                    <input className="inputadd"
                     type="text" 
                     value={input.hp}
                     name="hp"
@@ -123,56 +128,67 @@ function handleCheck(e) {
                 <div>
                     <label>Force:</label>
                     <input 
+                    className="inputadd"
                     type="text" 
                     value={input.strength} 
                     name="strength"
                     onChange={handleChange} 
                     placeholder="Force"
                     />
+                    {errors.strength && <p>{errors.strength}</p>}
                 </div>
                 <div>
                     <label>Defense:</label>
                     <input 
+                    className="inputadd"
                     type="text" 
                     value={input.defense} 
                     name="defense"
                     onChange={handleChange}
                     placeholder="Defense"
                      />
+                     {errors.defense && <p>{errors.defense}</p>}
                 </div>
                 <div>
                     <label>Speed:</label>
                     <input
+                    className="inputadd"
                     type="text" 
                     value={input.speed} 
                     name="speed"
                     onChange={handleChange}
                     placeholder="Speed"
                      />
+                        {errors.speed && <p>{errors.speed}</p>}
                 </div>
                 <div>
                     <label>Heigth:</label>
                     <input
+                    className="inputadd"
                     type="text"
                     value={input.height}
                     name="height"
                     onChange={handleChange}
                     placeholder="Heigth"
                     />
+                    {errors.height && <p>{errors.height}</p>}
                 </div>
                 <div>
                     <label>Weight:</label>
                     <input
+                    className="inputadd"
                     type="text"
                     value={input.weight}
                     name="weight"
                     onChange={handleChange}
                     placeholder="Weight"
                     />
+                    {errors.weight && <p>{errors.weight}</p>}
                 </div>
                 <div>
                     <label>Image:</label>
                     <input
+                    className="inputadd"
                     type="text"
                     value={input.sprites} 
                     name="sprites"
@@ -181,7 +197,8 @@ function handleCheck(e) {
                      />
                 </div>
                 <div>
-                    <label>Types:</label>
+                <label style={{ fontWeight: "bold" }}>Types:</label>
+                <div className="checkcontainer">
                 {allTypes?.map((type) =>{
                     return (
                         <div key={type.name}>
@@ -195,18 +212,22 @@ function handleCheck(e) {
                             onClick={handleCheck} 
                             />
                         </div>
+                    
                     )
                 })}
                 {input.types.length > 2 ? (
                     <p>Seleccione Máximo 2 Tipos</p>
                 ): null}
-
+                </div>
                 </div>
                 <div>
                     <button 
                     type="submit"
+                    className="btnsend"
                     >Submit</button>
                 </div>
+                </div>
+                </section>
             </form>
         </div>
     )

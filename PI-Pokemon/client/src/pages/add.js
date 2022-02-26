@@ -1,17 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import Formulario from "../components/formulario";
+import pokebola from "../assets/pokebola.png";
+
 
 export default function Add() {
     return(
         <div>
             <div>
-                <h1>Add Pokemon</h1>
-                <div>
-                    <Link to="/home">
-                    <button>Return to Home</button>
-                    </Link>
+            <Link to="/home" className="linkd">
+                <div className="wikiimg">
+                    <div>
+                        <img className="pokebolita" src={pokebola}></img>
+                    </div>
+                        <p>Back</p>
                 </div>
+            </Link>
             </div>
             <Formulario />
         </div>

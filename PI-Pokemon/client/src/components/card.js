@@ -29,7 +29,7 @@ export const Card = ({id, name, sprites, types, strength}) => {
                             <h4>Strength: {strength}</h4>
                         </div>
                         <div>
-                        <h5>Types: {/* {types.join(", ")} */}</h5>
+                        <h5>Tipos: {/* {types.join(", ")} */}</h5>
                              {types?.map((types) => (
                              <img src={img[types]} alt={types} key={types}/> 
                             ))} 
