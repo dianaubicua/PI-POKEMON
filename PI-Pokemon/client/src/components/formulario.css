@@ -33,6 +33,14 @@
     --hover-yellow: #bd8e00;
   }
 
+  main {
+    column-count:2;
+}
+
+input p .checkbox {
+  column-span:all;
+}
+
   .containerForm {
     max-width: 500px;
     min-width: 320px;
@@ -49,6 +57,10 @@
     flex-direction: column;
     border-radius: 8px;
     box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .errormessage {
+    color: var(--red-bootstrap);
   }
 
   .sectioncontainer {
@@ -89,7 +101,7 @@
     grid-template-columns: repeat(auto-fill, minmax(50px, 50px));
     grid-template-rows: repeat(auto-fill, minmax(50px, 50px));
     grid-gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     position: relative;
   }
 
@@ -119,3 +131,22 @@
     color: var(--absolute-white);
     background-color: var(--black-contrast);
   }
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 1px solid var(--steel-color);
+  border-radius: 4px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.espacio1 {
+  margin-top: 10px;
+  margin-bottom: 30px;  
+}
+  

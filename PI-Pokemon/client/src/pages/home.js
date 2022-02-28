@@ -36,6 +36,7 @@ const paginado = (pageNumber) => {
 
 useEffect(() => {
     dispatch(getPokemons())
+    console.log(currentPokemons)
     dispatch(getTypes())
 },[dispatch])
 
@@ -72,24 +73,24 @@ function handleSortStrength (e) {
 
 
     return (
-        <div className="backgroundHome">
+        <div className="backgroundHome fondo">
                 <SearchBar />
                 <div className="pokemonContainer">
 
             </div>
-            <div>
-                <select onChange={(e) => handleSortName(e)}>
-                    <option > Sort by Name</option>
+            <div className="alinear">
+                <select className="seleccionador" onChange={(e) => handleSortName(e)}>
+                    <option value="All"> Sort by Name</option>
                     <option value='asc'>Ascending order</option>
                     <option value='des'>Descending order</option>
                 </select>
-                <select onChange={(e) => handleSortStrength(e)}>
+                <select className="seleccionador" onChange={(e) => handleSortStrength(e)}>
                     <option value='All'>Sort by Strength</option>
                     <option value='ASCE'>Ascending order</option>
                     <option value='DESC'>Descending order</option>
                 </select>
 
-                <select onChange={e => handleFilterType(e)}>
+                <select className="seleccionador" onChange={e => handleFilterType(e)}>
                     <option value="all" >Sort by Type</option>
                     {
                         allTypes?.map(type => {
@@ -97,7 +98,7 @@ function handleSortStrength (e) {
                     })}
                 </select>
 
-                <select onChange={e => handleFilterCreated(e)}>
+                <select className="seleccionador" onChange={e => handleFilterCreated(e)}>
                     <option value='All'>Sort by Origin</option>
                     <option value='created'>Created</option>
                     <option value='api'>Internet</option>

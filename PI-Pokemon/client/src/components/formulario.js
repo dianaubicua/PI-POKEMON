@@ -11,10 +11,28 @@ import { Link } from "react-router-dom";
 function validate(input) {
     let errors = {};
     if (!input.name) {
-        errors.name = "El nombre es requerido";
-    } else if (!input.hp) {
-        errors.hp = "El nivel de vida es requerido";
+        errors.name = "Name is necessary";
     } 
+    if(!input.hp) {
+        errors.hp = "Life points is necessary";
+    }
+    if (!input.strength){
+        errors.strength = "Strength points is necessary";
+    }
+    if (!input.defense){
+        errors.defense = "Defense points is necessary";
+    }
+    if (!input.speed){
+        errors.speed = "Speed points is necessary";
+    }
+    if (!input.height){
+        errors.height = "Height points is necessary";
+    }
+    if (!input.weight){
+        errors.weight = "Weight points is necessary";
+    }
+
+
     return errors;
 };
 
@@ -45,7 +63,7 @@ export default function Add(){
         speed: "",
         height: "",
         weight: "",
-        sprites: "",
+        sprites: pokebola,
         types: [],
     });
 
@@ -98,11 +116,12 @@ function handleCheck(e) {
 
 
     return(
+        <main>
         <div className="containerForm">
             <form className="form" onSubmit={(e)=>handleSubmit(e)}>
                 <section className="sectioncontainer">
                 <div className="flexform">
-                <div className="flexinputadd">
+                <div>
                     <label>Name:</label>
                     <input 
                     className="inputadd"
@@ -111,82 +130,96 @@ function handleCheck(e) {
                     name="name"
                     onChange={handleChange} 
                     placeholder="Name"
+                    required
                     />
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.name && <p className="errormessage">{errors.name}</p>}
                 </div>
                 <div>
                     <label>Life:</label>
                     <input className="inputadd"
-                    type="text" 
+                    type="number" 
                     value={input.hp}
                     name="hp"
                     onChange={handleChange}
                     placeholder="Life"
+                    min="0"
+                    max="255"
                      />
-                     {errors.hp && <p>{errors.hp}</p>}
+                     {errors.hp && <p className="errormessage">{errors.hp}</p>}
                 </div>
                 <div>
                     <label>Force:</label>
                     <input 
                     className="inputadd"
-                    type="text" 
+                    type="number" 
                     value={input.strength} 
                     name="strength"
                     onChange={handleChange} 
                     placeholder="Force"
+                    min="0"
+                    max="255"
                     />
-                    {errors.strength && <p>{errors.strength}</p>}
+                    {errors.strength && <p className="errormessage">{errors.strength}</p>}
                 </div>
                 <div>
                     <label>Defense:</label>
                     <input 
                     className="inputadd"
-                    type="text" 
+                    type="number" 
                     value={input.defense} 
                     name="defense"
                     onChange={handleChange}
                     placeholder="Defense"
+                    min="0"
+                    max="255"
+
                      />
-                     {errors.defense && <p>{errors.defense}</p>}
+                     {errors.defense && <p className="errormessage">{errors.defense}</p>}
                 </div>
                 <div>
                     <label>Speed:</label>
                     <input
                     className="inputadd"
-                    type="text" 
+                    type="number" 
                     value={input.speed} 
                     name="speed"
                     onChange={handleChange}
                     placeholder="Speed"
+                    min="0"
+                    max="255"
                      />
-                        {errors.speed && <p>{errors.speed}</p>}
+                        {errors.speed && <p className="errormessage">{errors.speed}</p>}
                 </div>
                 <div>
                     <label>Heigth:</label>
                     <input
                     className="inputadd"
-                    type="text"
+                    type="number"
                     value={input.height}
                     name="height"
                     onChange={handleChange}
                     placeholder="Heigth"
+                    min="0"
+                    max="255"
                     />
-                    {errors.height && <p>{errors.height}</p>}
+                    {errors.height && <p className="errormessage">{errors.height}</p>}
                 </div>
                 <div>
                     <label>Weight:</label>
                     <input
                     className="inputadd"
-                    type="text"
+                    type="number"
                     value={input.weight}
                     name="weight"
                     onChange={handleChange}
                     placeholder="Weight"
+                    min="0"
+                    max="255"
                     />
-                    {errors.weight && <p>{errors.weight}</p>}
+                    {errors.weight && <p className="errormessage">{errors.weight}</p>}
                 </div>
                 <div>
-                    <label>Image:</label>
+                    <label>Url image:</label>
                     <input
                     className="inputadd"
                     type="text"
@@ -197,7 +230,9 @@ function handleCheck(e) {
                      />
                 </div>
                 <div>
-                <label style={{ fontWeight: "bold" }}>Types:</label>
+                    <br/>
+                <label style={{ fontWeight: "bold" }} className="espacio1">Types:</label>
+                <br/>
                 <div className="checkcontainer">
                 {allTypes?.map((type) =>{
                     return (
@@ -206,29 +241,38 @@ function handleCheck(e) {
                                 {(type.name)}
                             
                             <input 
+                            className="checkbox"
                             type="checkbox" 
                             value={type.name} 
                             name={type.name}
                             onClick={handleCheck} 
                             />
                         </div>
+                        
                     
                     )
                 })}
                 {input.types.length > 2 ? (
-                    <p>Seleccione Máximo 2 Tipos</p>
+                    <p className="errormessage">Select Maximum 2 Types</p>
                 ): null}
                 </div>
                 </div>
                 <div>
+                {
+                    !errors.name && !errors.hp && !errors.strength && !errors.defense && !errors.speed && !errors.height && !errors.weight && input.types.length <= 2 ? 
                     <button 
                     type="submit"
                     className="btnsend"
                     >Submit</button>
+                    : (<p>All fields must be filled out in order to register your pokemon</p>)
+                }
+                    
                 </div>
                 </div>
                 </section>
+                <br/>
             </form>
         </div>
+        </main>
     )
 }

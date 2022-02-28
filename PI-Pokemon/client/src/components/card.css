@@ -13,9 +13,9 @@
   .gridCard {
     /* position: relative; */
     display: grid;
-    grid-template-columns: 150px 150px;
-    justify-content: center;
-    background-color: var(--soft-gray);
+    /* grid-template-columns: 150px 150px; */
+    justify-content: display;
+    background-color: rgb(218, 214, 214);
     border: none;
     border-radius: 8px;
     box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
@@ -24,7 +24,7 @@
   }
 
   .gridCard:hover {
-    background-color: var(--absolute-white);
+    background-color: white;
     box-shadow: 16px 16px 16px rgba(0, 0, 0, 0.4);
   }
 
@@ -32,8 +32,8 @@
     font-size: 1.2rem;
   }
 
-  :root {
-    /* --black-contrast: #0b0f10; */
+  /* :root {
+    --black-contrast: #0b0f10; 
     --black-contrast: #21292c;
     --blue-bootstrap: #007bff;
     --absolute-white: #fff;
@@ -62,4 +62,4 @@
     --unknown-color: #699d8e;
     --shadow-color: #000000;
     --soft-gray: #eee;
-  }
+  } */

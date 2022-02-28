@@ -87,7 +87,16 @@
   .typesDetail {
     justify-content: center;
     display: flex;
-  }
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 16px;
+      width: 100px;
+    }
+
 
   .data {
     background-color: var(--absolute-white);

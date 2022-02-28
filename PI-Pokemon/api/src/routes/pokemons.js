@@ -54,7 +54,8 @@ router.get('/', async (req, res) =>{
         console.log(el);
         return   axios.get(el.url);
     });
-    //console.log(pokemones); 
+    console.log("CUALQUIER COSA"); 
+    console.log(pokemones);
     const pokemonesRender = await Promise.all(pokemones);
     const pokemonesRender2 = pokemonesRender.map(el =>{
         return {
@@ -69,16 +70,17 @@ router.get('/', async (req, res) =>{
 
   
     const infoDb = await Pokemon.findAll({include: Type});
+    console.log(infoDb, "HOLAAAAAAAA");
     const pokemonesDb = infoDb.map(p => {
         return {
             name: p.name,
-            image: p.image,
+            sprites: p.sprites,
             types: p.types.map(e => e.name),
-            str: p.str,
+            strength: p.strength,
             id: p.id,
-            spd: p.spd,
+            speed: p.speed,
             hp: p.hp,
-            def: p.def,
+            defense: p.defense,
             createdInDb: p.createdInDb
         }
     });

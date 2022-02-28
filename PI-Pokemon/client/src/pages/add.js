@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom"
 import Formulario from "../components/formulario";
 import pokebola from "../assets/pokebola.png";
+import './add.css'
 
 
 export default function Add() {
     return(
-        <div>
+        <div className="fondo">
             <div>
             <Link to="/home" className="linkd">
                 <div className="wikiimg">

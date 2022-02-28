@@ -48,7 +48,7 @@ export default function Detail() {
                 <p className="data">Speed: {myPokemon[0].speed}</p>
                 <p className="data">Height: {myPokemon[0].height}</p>
                 <p className="data">Weight: {myPokemon[0].weight}</p>
-                <h3 className="typesDetail">Types: {myPokemon[0].types?.map(t => t).join(", ")}  </h3>
+                <h3 className="data">Types: {myPokemon[0].types?.map(t => t).join(", ")}  </h3>
                 </div> 
                 ) : loader ? (
                     <Loader />
