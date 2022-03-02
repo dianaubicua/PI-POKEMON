@@ -73,10 +73,10 @@ function handleSortStrength (e) {
 
 
     return (
-        <div className="backgroundHome fondo">
+        <div className="fondo">
+        <div className="">
                 <SearchBar />
                 <div className="pokemonContainer">
-
             </div>
             <div className="alinear">
                 <select className="seleccionador" onChange={(e) => handleSortName(e)}>
@@ -132,6 +132,7 @@ function handleSortStrength (e) {
             </div>
             </div>
             
+        </div>
         </div>
     )
 }

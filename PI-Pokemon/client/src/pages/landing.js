@@ -8,15 +8,16 @@ export const Landing = () => {
     return(
         <div className="backgroundLanding">
             <div className="grid">
+            <h1 className="title"> My PokeWiki</h1>
                 <div>
                     <img src={pokebola} alt="pokebola" className="imgwiki"></img>
                 </div>
                 <div>
-                    <h1 className="title"></h1>
+                    
                 </div>
                 <div className="btncontainer">
                     <Link to="/home" >
-                        <button className="btn">GO!</button>
+                        <button className="btn">Pokemon GO!</button>
                     </Link>
                 </div>
             </div>

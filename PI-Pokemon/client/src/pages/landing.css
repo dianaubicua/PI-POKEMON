@@ -6,7 +6,7 @@
   }
 
 .btn {
-    margin: 50px 20px 20px 120px;
+    margin: 50px 20px 20px 50px;
     border: none;
     border-radius: 8px;
     font-size: 2rem;
@@ -23,12 +23,30 @@
 .title {
     font-size: 2rem;
     color: white;
+    text-align: center;
+    -webkit-text-stroke: 1px rgb(236, 219, 164);
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin: 0px 0px 50px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 5px rgb(223, 157, 109,1),
+		0 0 10px rgba(223, 157, 109,1),
+		0 0 20px rgb(223, 157, 109,1),
+		0 0 40px rgba(246, 144, 72,1),
+		0 0 80px rgba(246, 144, 72,1),
+		0 0 90px rgb(250, 101, 1, 1),
+		0 0 100px rgba(250, 101, 1,1),
+		0 0 140px rgb(255, 255, 255),
+		0 0 180px rgb(248, 222, 204);
   }
 
 .grid {
   display: grid;
-  grid-template-columns: 100px 250px;
-  align-items: center;
+/*   grid-template-columns: 100px 250px;
+ */  align-items: center;
   margin-top: 40px;
   margin: 0 auto;
   width: 350px;
@@ -39,7 +57,7 @@
 } 
 
 .imgwiki {
-    margin: 70px 30px 50px 80px;
+    margin: 70px 30px 50px 50px;
     width: 180px;
     height: 180px;
     border-radius: 100%;

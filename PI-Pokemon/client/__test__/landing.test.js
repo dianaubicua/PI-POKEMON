@@ -7,4 +7,3 @@ test('Renderiza texto de bienvenida', () => {
 
     expect(screen.getByText('My PokeWiki')).toBeInTheDocument()
 })
-

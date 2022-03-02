@@ -44,7 +44,8 @@ router.get('/', async (req, res) =>{
         }
     }
     catch(error){
-        res.status(400).send(error);
+        console.log("cualquier cosa");
+        res.status(200).send([]);
     }
 } else {
 
@@ -145,6 +146,12 @@ router.post('/', async (req, res) => {
     res.send('Pokemon creado');
     console.log(pokemonCreado, "!!!!!!");
 })
+
+//EJEMPLO DE UNA FUNCIÓN EN PROMESAS
+
+/* export function postPokemon(payload) {
+
+} */
 
 
 // router.post('/', async (req, res) => {

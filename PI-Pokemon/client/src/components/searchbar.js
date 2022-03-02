@@ -5,11 +5,6 @@ import { getNamePokemons } from "../actions";
 import { useSelector } from "react-redux"
 import './searchbar.css';
 import { Link } from "react-router-dom";
-import {  
-    filterCreated, 
-    filterName, 
-    orderByStrength,
-    filterByType   } from "../actions"
 
 export default function SearchBar({onSearch}) {
     const dispatch = useDispatch()
@@ -19,30 +14,6 @@ export default function SearchBar({onSearch}) {
     const [orden, setOrder] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1)
-
-
-    function handleFilterCreated(e) {
-        dispatch(filterCreated(e.target.value))
-        setCurrentPage(1)
-    }
-    
-    function handleFilterType(e) {
-        dispatch(filterByType(e.target.value))
-        setCurrentPage(1)
-    }
-    
-    function handleSortName (e) {
-        e.preventDefault()
-        dispatch(filterName(e.target.value))
-        setCurrentPage(1)
-        setOrder(e.target.value);
-    }
-    
-    function handleSortStrength (e) {
-        e.preventDefault()
-        dispatch(orderByStrength(e.target.value))
-        setCurrentPage(1)
-    }    
 
     
     
@@ -57,13 +28,19 @@ export default function SearchBar({onSearch}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(getNamePokemons(name));
+        let data = getNamePokemons(name);
+        console.log(data, "DOISFOIOFDSIFDS");
+        if (data.length === 0) {
+            alert("Pokemon not found");
+        } else {
+            dispatch(data);
+        }
     }
     
-    const handleOnSearch = () => {
+  /*   const handleOnSearch = () => {
         onSearch(search);
         setSearch("");
-    }
+    } */
 
     return (
         <div className="formbar">
@@ -95,31 +72,6 @@ export default function SearchBar({onSearch}) {
                 Add New Pokemon
             </button>
             </Link>
-            {/* <div className="">
-                <select className="seleccionador" onChange={(e) => handleSortName(e)}>
-                    <option value="All"> Sort by Name</option>
-                    <option value='asc'>Ascending order</option>
-                    <option value='des'>Descending order</option>
-                </select>
-                <select  className="seleccionador" onChange={(e) => handleSortStrength(e)}>
-                    <option value='All'>Sort by Strength</option>
-                    <option value='ASCE'>Ascending order</option>
-                    <option value='DESC'>Descending order</option>
-                </select>
-
-                <select className="seleccionador" onChange={e => handleFilterType(e)}>
-                    <option value="all" >Sort by Type</option>
-                    {
-                        allTypes?.map(type => {
-                        return (<option key={type.name} value={type.name}>{type.name}</option>)
-                    })}
-                </select>
-
-                <select className="seleccionador" onChange={e => handleFilterCreated(e)}>
-                    <option value='All'>Sort by Origin</option>
-                    <option value='created'>Created</option>
-                    <option value='api'>Internet</option>
-                </select> */}
             
      </div>
     )
