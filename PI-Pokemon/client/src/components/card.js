@@ -2,13 +2,14 @@ import React from 'react';
  import img from '../helpers/powerType' 
 import { Link } from "react-router-dom"
 import './card.css'
-
+import {useState} from 'react';
 
 export const Card = ({id, name, sprites, types, strength}) => {
     console.log(types)
+    const [empety, setEmpety] = useState(false);
 
     if(types === undefined) {
-
+        setEmpety(true)
         types = []   
         /* alert("Pokemon not found") */
     }else

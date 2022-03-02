@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {postPokemones, getTypes} from "../actions/index";
+import {postPokemones, getTypes, getNamePokemons, getPokemons} from "../actions/index";
 import './formulario.css';
 import pokebola from "../assets/pokebola.png";
 import { Link } from "react-router-dom";
@@ -45,10 +45,17 @@ export default function Add(){
     const allTypes = useSelector(state => state.types)
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const allPokemons = useSelector(state => state.pokemons)
+
     console.log(allTypes)
 
     useEffect(() => {
         dispatch(getTypes());
+        dispatch(getPokemons())
+
+
+        console.log(allPokemons);
+        console.log(state => state.pokemons)
     }, []);
     
     useEffect(() => {
@@ -95,22 +102,40 @@ function handleCheck(e) {
   }
 
 
-  function handleSubmit(e){
+  async function  handleSubmit(e){
       e.preventDefault();
-        dispatch(postPokemones(input))
-        alert("¡Pokemon creado!")
-        setInput({
-            name: "",
-            hp: "",
-            strength: "",
-            defense: "",
-            speed: "",
-            height: "",
-            weight: "",
-            sprites: "",
-            types: [], 
-        })
-       navigate("/home")
+      
+      console.log(allPokemons);
+
+
+      let found = true;
+       allPokemons.find((ele) => {
+           console.log(ele.name, input.name)
+           if(ele.name === input.name){
+                found = false;
+            }
+       })
+        
+
+        if (found) {
+            dispatch(postPokemones(input))
+            alert("¡Pokemon creado!")
+            setInput({
+                name: "",
+                hp: "",
+                strength: "",
+                defense: "",
+                speed: "",
+                height: "",
+                weight: "",
+                sprites: "",
+                types: [], 
+            })
+            navigate("/home")
+        } else {
+            alert("Pokemon already exists");
+        }
+       
   }
 
 

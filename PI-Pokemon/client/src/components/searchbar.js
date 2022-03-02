@@ -29,7 +29,6 @@ export default function SearchBar({onSearch}) {
     function handleSubmit(e) {
         e.preventDefault();
         let data = getNamePokemons(name);
-        console.log(data, "DOISFOIOFDSIFDS");
         if (data.length === 0) {
             alert("Pokemon not found");
         } else {
