@@ -11,23 +11,29 @@ import Card from "../components/card"
 import Paginado from "../components/paginado"
 import SearchBar from "../components/searchbar"
 import './home.css'
-import { Link } from "react-router-dom"
+import Loader from "../components/loader"
 
 export default function Home () {
 const dispatch = useDispatch()
 const allPokemons = useSelector(state => state.pokemons)
+const loadPokemon  = useSelector(state => state.loadPokemon)
 
 const [currentPage, setCurrentPage] = useState(1) //mipagina actual que arranca en 1
 const [pokemonsPerPage, setPokemonsPerPage] = useState(12) //mis personajes por pagina
 const indexOfLastPokemon = currentPage * pokemonsPerPage //indice del ultimo personaje
 const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage //indice del primer personaje menos la cantidad de personajes por pagina
 const currentPokemons = allPokemons?.slice(indexOfFirstPokemon, indexOfLastPokemon) //toma el indice del primero y del último de cada página, o sea si mi página termina en 12 la siguiente comienza en 13 y termina en 24, se modifica dependiendo de la página en la que estoy
+const [pokemonPage, setPokemontPage] = useState(allPokemons?.slice(indexOfFirstPokemon, indexOfLastPokemon)) //mipagina actual que arranca en 1
+//const [currentPokemons1,setCurrentPoke  ] = useState(allPokemons)
+
+
 
 const allTypes = useSelector(state => state.types)
 
 
 // eslint-disable-next-line
 const [orden, setOrder] = useState("");
+const [ strength, setStrengt] = useState("")
 
 
 const paginado = (pageNumber) => {
@@ -38,6 +44,8 @@ useEffect(() => {
     dispatch(getPokemons())
     console.log(currentPokemons)
     dispatch(getTypes())
+
+    //setCurrentPoke(allPokemons?.slice(indexOfFirstPokemon, indexOfLastPokemon))
 },[dispatch])
 
 function handleClick(e) {
@@ -69,13 +77,34 @@ function handleSortStrength (e) {
     setCurrentPage(1)
     setOrder(e.target.value);
 }
+
+function upDate(strength) {
+    var allPokemonsAux = []
+    allPokemons.forEach(pokemones => {
+        
+        if(pokemones.strength === Number.parseInt(strength) ){
+            console.log(pokemones.strength, strength)
+            allPokemonsAux.push(pokemones)
+        }
+    });
+
+    console.log(allPokemonsAux)
+    currentPokemons = allPokemonsAux
+}
  
-
-
+if (loadPokemon.length === 0) {
+    return (
+        <div className="loader">
+            <Loader />
+        </div>
+    )
+} else {
     return (
         <div className="fondo">
         <div className="">
-                <SearchBar />
+                <SearchBar
+                    onSearch={upDate}
+                />
                 <div className="pokemonContainer">
             </div>
             <div className="alinear">
@@ -113,21 +142,34 @@ function handleSortStrength (e) {
                 />
             </div>
             <div className="gridHome">
-                {currentPokemons?.map((c) => {
+                
+                {currentPokemons.length > 0 && 
+                    currentPokemons?.map((c) => {
                     return (
-                        <div>
+                       <div>
+
+                           { c.name != "" &&
                             <Card
-                            key={c.id}
-                            name={c.name}
-                            sprites={c.sprites}
-                            strength={c.strength}
-                            types={c.types}
-                            id={c.id}
-                        />
-                        </div>
+                                key={c.id}
+                                name={c.name}
+                                sprites={c.sprites}
+                                strength={c.strength}
+                                types={c.types}
+                                id={c.id}
+                            />
+                           }
+                           {c.name === undefined &&
+                            <h1 className="notfound">Pokemons not found</h1>
+                           } 
+                     
+                       </div>
                         
                     )
                 })}
+                {currentPokemons.length === 0 &&
+                
+                    <h1 className="notfound">Pokemons not found</h1>
+                }
                         
             </div>
             </div>
@@ -135,4 +177,5 @@ function handleSortStrength (e) {
         </div>
         </div>
     )
+}
 }

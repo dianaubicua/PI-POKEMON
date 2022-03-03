@@ -31,7 +31,7 @@ function validate(input) {
     if (!input.weight){
         errors.weight = "Weight points is necessary";
     }
-
+  
 
     return errors;
 };
@@ -253,6 +253,9 @@ function handleCheck(e) {
                     onChange={handleChange}
                     placeholder="Url image jpg"
                      />
+                     {input.sprites.length > 250 ? (
+                    <p className="errormessage">the url must be less than 250 characters</p>
+                ): null}
                 </div>
                 <div>
                     <br/>

@@ -1,15 +1,14 @@
 import React from "react";
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
-import { getNamePokemons } from "../actions";
+import { getNamePokemons, getPokemons } from "../actions";
 import { useSelector } from "react-redux"
 import './searchbar.css';
 import { Link } from "react-router-dom";
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar(props) {
     const dispatch = useDispatch()
     const allPokemons = useSelector(state => state.pokemons)
-    const allTypes = useSelector(state => state.types)
     // eslint-disable-next-line
     const [orden, setOrder] = useState("");
 
@@ -19,21 +18,27 @@ export default function SearchBar({onSearch}) {
     
     const [name, setName] = useState("");
     const [search, setSearch] = React.useState("")
+    const [ strength, setStrengt] = useState("")
 
     function handleInputChange(e) {
         e.preventDefault();
-        setName(e.target.value);
+        setStrengt(e.target.value);
         console.log(name);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        let data = getNamePokemons(name);
-        if (data.length === 0) {
+        console.log(allPokemons)
+
+        props.onSearch(strength);
+   
+        /* 
+        let data = getPokemons(strength);
+        if (data > 0) {
             alert("Pokemon not found");
         } else {
-            dispatch(data);
-        }
+            dispatch(e);
+        } */
     }
     
   /*   const handleOnSearch = () => {
@@ -50,8 +55,8 @@ export default function SearchBar({onSearch}) {
                 </Link>
             <input
             className="inputSearch"
-            value={name}
-            type="text"
+            value={strength}
+            type="number"
             placeholder="Type a pokemon name"
             autoComplete="off"
             onChange={(e) => handleInputChange(e)}

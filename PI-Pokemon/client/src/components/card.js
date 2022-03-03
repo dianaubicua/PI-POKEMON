@@ -9,7 +9,7 @@ export const Card = ({id, name, sprites, types, strength}) => {
     const [empety, setEmpety] = useState(false);
 
     if(types === undefined) {
-        setEmpety(true)
+        //setEmpety(true)
         types = []   
         /* alert("Pokemon not found") */
     }else
@@ -50,9 +50,7 @@ export const Card = ({id, name, sprites, types, strength}) => {
                 </Link>
               
             }
-             { types.length === 0 &&
-                <h1>Pokemon no encontrado</h1>
-             }
+            
                 
                 </div> 
             

@@ -127,7 +127,7 @@ router.post('/', async (req, res) => {
         sprites,
     } = req.body;
     //console.log(req.body);
-
+    name = name.toLowerCase();
     let pokemonCreado = await Pokemon.create({
         name,
         hp,
@@ -147,11 +147,6 @@ router.post('/', async (req, res) => {
     console.log(pokemonCreado, "!!!!!!");
 })
 
-//EJEMPLO DE UNA FUNCIÓN EN PROMESAS
-
-/* export function postPokemon(payload) {
-
-} */
 
 
 // router.post('/', async (req, res) => {

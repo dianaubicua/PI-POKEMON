@@ -2,6 +2,7 @@ const initialState = {
     pokemons: [], //estado actual de los pokemons
     pokemonsCopy: [], //opia del estado original siempre va a tener todos los pokemon del api y bd
     allPokemons: [], //todos los pokemons del api
+    loadPokemon: [], //pokemon que se esta cargando
     types: [], //guarda el arreglo de los tipos
     pokemonDetail: [], 
     filter: {
@@ -45,7 +46,8 @@ function rootReducer (state=initialState, action) {
                 ...state,
                 pokemons: action.payload,
                 pokemonsCopy: action.payload,
-                allPokemons: action.payload
+                allPokemons: action.payload,
+                loadPokemon: action.payload
             }
         case 'GET_TYPES':
             return {

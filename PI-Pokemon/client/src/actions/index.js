@@ -72,9 +72,13 @@ export function orderByStrength(payload) {
 
 }
 
+export function getPokemonStrength(payload) {
+    
+}
+
 export function getNamePokemons(name){
     return async function (dispatch){
-        console.log(name,"222222222222222222222222222222222");
+        console.log(name);
         try{
             const pokemonName = await axios.get("http://localhost:3001/pokemons/?name=" + name)
             console.log(pokemonName);
@@ -109,3 +113,46 @@ export function getDetail(id) {
     }
     
 }
+
+
+
+//EJEMPLO DE UNA FUNCIÓN EN PROMESAS
+
+/* export function getPokemon() {
+    return function(dispatch) {
+        return fetch("https://pokeapi.co/api/v2/pokemon/?limit=40&offset=0")
+        .then(res => res.json())
+        .then(pokes => dispatch({
+            type: GET_POKEMONS, 
+            payload: pokes
+        }))
+    }
+}
+
+
+} */
+
+
+/* export function getNamePokemons(name){
+    return async function (dispatch){
+        console.log(name,"222222222222222222222222222222222");
+        try{
+            var pokemonName = await axios.get("http://localhost:3001/pokemons/?name=" + name)
+            console.log(pokemonName);
+            
+        }catch(error){
+        console.log(error);
+    }
+    finally{
+        if (pokemonName) {
+            return dispatch({
+                type: 'GET_NAME_POKEMONS',
+                payload: pokemonName.data
+            })
+        } else {
+            return alert('Pokemon not found')
+        }
+    }
+}
+}
+ */
