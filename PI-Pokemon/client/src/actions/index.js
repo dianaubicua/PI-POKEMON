@@ -73,7 +73,11 @@ export function orderByStrength(payload) {
 }
 
 export function getPokemonStrength(payload) {
-    
+    console.log(payload);
+    return {
+        type: 'GET_POKEMON_STRENGTH',
+        payload
+    }
 }
 
 export function getNamePokemons(name){

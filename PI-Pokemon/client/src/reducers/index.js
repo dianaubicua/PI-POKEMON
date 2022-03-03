@@ -38,6 +38,19 @@ function filterByStrength(pokemons, payload) {
             return score
 }
 
+function upDate(pokemons, strength) {
+    var allPokemonsAux = []
+    pokemons.forEach(pokemones => {
+        
+        if(pokemones.strength === Number.parseInt(strength) ){
+            console.log(pokemones.strength, strength)
+            allPokemonsAux.push(pokemones)
+        }
+    });
+
+    console.log(allPokemonsAux)
+    return allPokemonsAux
+}
 
 function rootReducer (state=initialState, action) {
     switch (action.type) {
@@ -78,23 +91,27 @@ function rootReducer (state=initialState, action) {
                     return 1;
                 }
                 })
+
+                console.log(sortedArr)
         return {
             ...state,
             pokemonsCopy: sortedArr,
         }
 
-        case 'ORDER_BY_STRENGTH':
-            let score = filterByStrength(state.pokemons, action.payload)
+         case 'GET_POKEMON_STRENGTH':
+             console.log(action.payload)
+            let scorei = upDate(state.pokemons, action.payload)
+            console.log(scorei)
+            
             return {
                 ...state,
-                pokemonsCopy: score,
-                filter: {
-                    ...state.filter,
-                    strength: action.payload
-                }
+                pokemonsCopy: scorei,
             }
+
+       
         case 'FILTER_BY_TYPE':
             const misPokes = state.pokemonsCopy;
+            console.log(misPokes)
             const typesFiltered = action.payload === 'all' ? misPokes :
              misPokes.filter(p => {
                  if(typeof p.types[0] !== 'string'){
@@ -108,6 +125,17 @@ function rootReducer (state=initialState, action) {
                 ...state,
                 pokemons: typesFiltered,
             }
+            case 'ORDER_BY_STRENGTH':
+                let score = filterByStrength(state.pokemons, action.payload)
+                score = score.filter
+                return {
+                    ...state,
+                    pokemonsCopy: score,
+                    filter: {
+                        ...state.filter,
+                        strength: action.payload
+                    }
+                }
 
         case 'FILTER_CREATED': 
         const todosPokemons = state.pokemonsCopy;

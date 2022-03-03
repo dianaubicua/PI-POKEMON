@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
-import { getNamePokemons, getPokemons } from "../actions";
+import { getNamePokemons, getPokemons, getPokemonStrength } from "../actions";
 import { useSelector } from "react-redux"
 import './searchbar.css';
 import { Link } from "react-router-dom";
@@ -18,12 +18,12 @@ export default function SearchBar(props) {
     
     const [name, setName] = useState("");
     const [search, setSearch] = React.useState("")
-    const [ strength, setStrengt] = useState("")
+    const [ strength, setStrength] = useState("")
 
     function handleInputChange(e) {
         e.preventDefault();
-        setStrengt(e.target.value);
-        console.log(name);
+        dispatch(getPokemons())
+        setStrength(e.target.value);
     }
 
     function handleSubmit(e) {

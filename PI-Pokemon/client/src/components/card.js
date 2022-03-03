@@ -5,7 +5,7 @@ import './card.css'
 import {useState} from 'react';
 
 export const Card = ({id, name, sprites, types, strength}) => {
-    console.log(types)
+   /*  console.log(types) */
     const [empety, setEmpety] = useState(false);
 
     if(types === undefined) {

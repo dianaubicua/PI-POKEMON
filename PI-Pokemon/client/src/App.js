@@ -1,10 +1,5 @@
 import './App.css';
 import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getPokemons, 
-  getTypes, 
-  } from "../src/actions/index"
 import { Provider } from 'react-redux'
 import { Routes, Route } from 'react-router-dom';
 import Landing from './pages/landing';
@@ -14,13 +9,6 @@ import DetailID from './pages/detailID.js';
 import store from './store/index'
 
 function App() {
- /*  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getPokemons())
-    dispatch(getTypes())
-  } , [dispatch])
- */
-
 
   return (
     <div className="App">
